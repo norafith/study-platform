@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-const Spinner = styled.div`
-  width: 100px;
-  height: 100px;
+interface SpinnerProps {
+  $sizeInPx?: number;
+}
+
+const Spinner = styled.div<SpinnerProps>`
+  width: ${(props) => props.$sizeInPx ?? 100}px;
+  height: ${(props) => props.$sizeInPx ?? 100}px;
   border-radius: 100%;
   background-color: #226fc8;
   animation-name: pulsate;
