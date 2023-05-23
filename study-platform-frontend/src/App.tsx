@@ -1,27 +1,35 @@
-// import { styled } from "styled-components";
-
 import { styled } from "styled-components";
-import Grid from "./components/general/Grid";
+import Spinner from "./components/general/Spinner";
+import React from "react";
+import Layout from "./components/Layout";
 
-const StyledDiv = styled.div`
-  width: 100%;
-`;
-const DivRed = styled(StyledDiv)`
-  background-color: #2b2b2b;
+const LoadingScreen = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-color: black;
 `;
 
-const DivGreen = styled(StyledDiv)`
-  background-color: #080808;
-  color: white;
-`;
+interface AppProps {
+  windowWidth: number | null;
+}
 
-const App: React.FC = () => {
-  return (
-    <Grid $columnTemplate="300px 1fr" $rowTemplate="100vh">
-      <DivRed />
-      <DivGreen>Hello world!</DivGreen>
-    </Grid>
-  );
+const App: React.FC<AppProps> = (props) => {
+  if (!props.windowWidth) {
+    return (
+      <LoadingScreen>
+        <Spinner />
+        <span style={{ marginTop: 30 }}>Loading...</span>
+      </LoadingScreen>
+    );
+  }
+
+  return <Layout windowWidth={props.windowWidth}>Hello World!</Layout>;
 };
 
 export default App;
