@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 const AppContainer: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState<number | null>(null);
@@ -18,7 +19,11 @@ const AppContainer: React.FC = () => {
     };
   });
 
-  return <App windowWidth={windowWidth} />;
+  return (
+    <BrowserRouter>
+      <App windowWidth={windowWidth} />
+    </BrowserRouter>
+  );
 };
 
 export default AppContainer;

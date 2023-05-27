@@ -2,12 +2,7 @@ import { styled } from "styled-components";
 import Spinner from "./components/general/Spinner";
 import React from "react";
 import Layout from "./components/Layout";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const LoadingScreen = styled.div`
   display: flex;
@@ -25,10 +20,6 @@ interface AppProps {
   windowWidth: number | null;
 }
 
-const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<div>Test</div>} />)
-);
-
 const App: React.FC<AppProps> = (props) => {
   if (!props.windowWidth) {
     return (
@@ -41,7 +32,10 @@ const App: React.FC<AppProps> = (props) => {
 
   return (
     <Layout windowWidth={props.windowWidth}>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/messages" element={<div>Messages</div>} />
+      </Routes>
     </Layout>
   );
 };
