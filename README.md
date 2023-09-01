@@ -6,7 +6,6 @@ Frontend:
 - Redux, Redux toolkit
 - Styled components
 - Typescript
-В планах: redux toolkit query
 
 Backend (пока не реализован):
 - Node
